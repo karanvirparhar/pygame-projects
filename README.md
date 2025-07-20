@@ -1,2 +1,6 @@
 # pygame_projects
-Game projects created using pygame
+This repo includes the following games:
+Snake
+Tic Tac Toe
+Pong
+Bot Pong
