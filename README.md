@@ -135,18 +135,6 @@ python3 games/tank_battle/tank_battle.py
 
 ![Tank Battle gameplay](games/tank_battle/gameplay.gif)
 
-### Physics Runner
-
-Run through a physics-themed world, collect items, and learn physics facts.
-
-Run it with:
-
-```bash
-python3 games/physics_runner/physics_runner.py
-```
-
-![Physics Runner gameplay](games/physics_runner/gameplay.gif)
-
 ### Racer
 
 Steer the circle car along the moving track.
