@@ -1,4 +1,7 @@
 import pygame, random
+from pathlib import Path
+
+ASSET_DIR = Path(__file__).parent / "assets"
 
 pygame.init()
 
@@ -31,7 +34,7 @@ Red = (255, 0, 0)
 Grey = (127, 127, 127)
 
 #Set fonts
-font = pygame.font.Font("Font.ttf", 32)
+font = pygame.font.Font(str(ASSET_DIR / "font.ttf"), 32)
 
 #Set text
 score_text = font.render("Score: " + str(score), True, Green, DarkGreen)
@@ -55,17 +58,17 @@ continue_rect = continue_text.get_rect()
 continue_rect.center = (window_width//2, window_height//2 + 32)
 
 #Set sounds and music
-coin_sound = pygame.mixer.Sound("Power_up.wav")
-loss_sound = pygame.mixer.Sound("Loss.wav")
-pygame.mixer.music.load("song.wav")
+coin_sound = pygame.mixer.Sound(str(ASSET_DIR / "power_up.wav"))
+loss_sound = pygame.mixer.Sound(str(ASSET_DIR / "loss.wav"))
+pygame.mixer.music.load(str(ASSET_DIR / "song.wav"))
 
 #Set images
-player_image = pygame.image.load("dragon_right.png")
+player_image = pygame.image.load(str(ASSET_DIR / "dragon_right.png"))
 player_rect = player_image.get_rect()
 player_rect.left = 32
 player_rect.centery = window_height//2
 
-coin_image = pygame.image.load("coin.png")
+coin_image = pygame.image.load(str(ASSET_DIR / "coin.png"))
 coin_rect = coin_image.get_rect()
 coin_rect.x = window_width + Buffer_Distance
 coin_rect.y = random.randint(64, window_height)

@@ -1,7 +1,10 @@
 import pygame, time
+from pathlib import Path
 from pygame.locals import *
 
 pygame.init()
+
+ASSET_DIR = Path(__file__).parent / "assets"
 
 Height = 640
 Width = 640
@@ -13,7 +16,7 @@ count = 0
 
 rects = []
 
-font = pygame.font.Font('Font.ttf', 32)
+font = pygame.font.Font(str(ASSET_DIR / "font.ttf"), 32)
 
 state = {1: '', 2: '', 3: '', 4: '', 5: '', 6: '', 7: '', 8: '', 9: ''}
 

@@ -1,7 +1,10 @@
 import pygame, random
+from pathlib import Path
 
 from pygame.locals import *
 pygame.init()
+
+ASSET_DIR = Path(__file__).parent / "assets"
 
 Width = 640
 Height = 480
@@ -30,7 +33,7 @@ snakelist = []
 # append snake head to the list
 snakelist.append([snakex, snakey])
 
-font = pygame.font.Font("Font.ttf", 32)
+font = pygame.font.Font(str(ASSET_DIR / "font.ttf"), 32)
 
 score = 0
 
@@ -47,9 +50,9 @@ continue_text = font.render("Press any key to play again", True, 'green')
 continue_rect = continue_text.get_rect()
 continue_rect.center = (Width//2, Height//2 + 32)
 
-pygame.mixer.music.load("song.wav")
-food_sound = pygame.mixer.Sound("sound.wav")
-loss_sound = pygame.mixer.Sound("Loss.wav")
+pygame.mixer.music.load(str(ASSET_DIR / "song.wav"))
+food_sound = pygame.mixer.Sound(str(ASSET_DIR / "sound.wav"))
+loss_sound = pygame.mixer.Sound(str(ASSET_DIR / "loss.wav"))
 
 m = 0
 

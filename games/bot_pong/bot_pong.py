@@ -1,6 +1,9 @@
 import pygame
+from pathlib import Path
 from pygame.locals import *
 pygame.init()
+
+ASSET_DIR = Path(__file__).parent / "assets"
 
 screen = pygame.display.set_mode((1280, 480))
 pygame.display.set_caption("Pong!")
@@ -12,7 +15,7 @@ y1 = 190
 cx = 640
 cy = 240
 
-font = pygame.font.Font('Font.ttf', 32)
+font = pygame.font.Font(str(ASSET_DIR / "font.ttf"), 32)
 
 score = 0
 score1 = 0
@@ -31,6 +34,7 @@ while True:
 
     screen.fill((0, 0, 0))
     clock.tick(fps)
+    
     pygame.draw.rect(screen, (255, 0, 0), r)
 
     pygame.draw.rect(screen, (0, 0, 255), r1)
@@ -51,10 +55,6 @@ while True:
         y -= velocity
     if keys[pygame.K_s]:
         y += velocity
-    if keys[pygame.K_UP]:
-        y1 -= velocity
-    if keys[pygame.K_DOWN]:
-        y1 += velocity
 
     if y <= 0:
         y = 0
@@ -64,6 +64,27 @@ while True:
         y1 = 0
     elif y1 >= 380:
         y1 = 380
+
+    if x_speed == 3:        
+        if c.centery <= r1.centery:
+            y1 -= velocity
+        if c.centery >= r1.centery:
+            y1 += velocity
+
+    elif x_speed == -3:
+        if r1.centery > 240:
+            while r1.centery != 240:
+                y1 -= velocity
+                if r1.centery == 240:
+                    break
+                break
+
+        if r1.centery < 240:
+            while r1.centery != 240:
+                y1 += velocity
+                if r1.centery == 240:
+                    break
+                break
 
     if cx >= 1260:
         cx = 640
